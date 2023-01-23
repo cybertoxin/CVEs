@@ -1,4 +1,4 @@
-<h1>Insecure permissions and multiple vulnerabilities in ChinaMobile PLC wireless routers leaves more than 4,300 devices vulnerable to remote attacks Blank passwords and default factory settings</h1>
+# Insecure permissions and multiple vulnerabilities in ChinaMobile PLC wireless routers leaves more than 4,300 devices vulnerable to remote attacks Blank passwords and default factory settings
 
 ChinaMobile PLC Wireless Router model GPN2.4P21-C-CN running the firmware version W2000EN-01(hardware platform Gpn2.4P21-C_WIFI-V0.05) is shipped and deployed without an administrative password on port 8080 and the web configuration interface is accessible using the following syntax: http://<target ip>:8080. From the configuration page an attacker can change the router configuration or he can try to obtain access to the internal network.
 
